@@ -115,6 +115,6 @@ def main():
                 "skill_3": skill_m[2],
            }
 
-file_operations.render_template("charsheet.svg", f"c:/dnd/{name}.svg", context)
+            file_operations.render_template("charsheet.svg", f"c:/dnd/{name}.svg", context)
 if __name__ == "__main__":
    main()
