@@ -2,6 +2,7 @@ import os
 from faker import Faker
 import random
 import file_operations
+
 FAKE = Faker("ru_RU")
 LETTERS = {
     'а': 'а͠',
@@ -72,6 +73,7 @@ LETTERS = {
     'Я': 'Я̋',
     ' ': ' ',
 }
+
 def main():
     os.makedirs('dnd', exist_ok=True)
     for i in range(10):
@@ -85,6 +87,7 @@ def main():
                  "Ледяной выстрел",
                 "Огненный заряд",
          }
+
         random_num = random.randint(3, 18)
         runic_skills = []
             for skills in skills_list:
@@ -111,6 +114,7 @@ def main():
                 "skill_2": skill_m[1],
                 "skill_3": skill_m[2],
            }
+
 file_operations.render_template("charsheet.svg", f"c:/dnd/{name}.svg", context)
 if __name__ == "__main__":
    main()
