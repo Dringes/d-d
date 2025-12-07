@@ -76,45 +76,51 @@ LETTERS = {
 
 def main():
     os.makedirs('dnd', exist_ok=True)
+
     for i in range(10):
         skills_list = {
-                "Стремительный прыжок", 
-                "Электрический выстрел", 
-                "Ледяной удар",
-                "Стремительный удар", 
-                "Кислотный взгляд", 
-                "Тайный побег",
-                 "Ледяной выстрел",
-                "Огненный заряд",
-         }
+            "Стремительный прыжок",
+            "Электрический выстрел",
+            "Ледяной удар",
+            "Стремительный удар",
+            "Кислотный взгляд",
+            "Тайный побег",
+            "Ледяной выстрел",
+            "Огненный заряд",
+        }
 
         random_num = random.randint(3, 18)
-        runic_skills = []
-            for skills in skills_list:
-             new_skills = ""
-             for ch in skills:
-                 new_skills += letters.get(ch, ch)
-             runic_skills.append(new_skills)
-            skill_m = random.sample(runic_skills, 3)
-            name = fake.first_name()
-            last_name = fake.last_name()
-            job = fake.job()
-            city = fake.city()
-            context = {
-                "first_name": name,
-                "last_name": last_name,
-                "job": job,
-                "town": city,
-                "strength": random_num,
-                "agility": random_num,
-                "endurance": random_num,
-                "intelligence": random_num,
-                "luck": random_num,
-                "skill_1": skill_m[0],
-                "skill_2": skill_m[1],
-                "skill_3": skill_m[2],
-           }
 
-            file_operations.render_template("charsheet.svg", f"c:/dnd/{name}.svg", context)
+        runic_skills = []
+        for skill in skills_list:
+            new_skill = ""
+            for ch in skill:
+                new_skill += letters.get(ch, ch)
+            runic_skills.append(new_skill)
+
+        skill_m = random.sample(runic_skills, 3)
+        name = fake.first_name()
+        last_name = fake.last_name()
+        job = fake.job()
+        city = fake.city()
+
+        context = {
+            "first_name": name,
+            "last_name": last_name,
+            "job": job,
+            "town": city,
+            "strength": random_num,
+            "agility": random_num,
+            "endurance": random_num,
+            "intelligence": random_num,
+            "luck": random_num,
+            "skill_1": skill_m[0],
+            "skill_2": skill_m[1],
+            "skill_3": skill_m[2],
+        }
+
+        file_operations.render_template("charsheet.svg",f"c:/dnd/{name}.svg",context)
+
+
 if __name__ == "__main__":
-   main()
+    main()
